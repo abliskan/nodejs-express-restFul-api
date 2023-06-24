@@ -4,6 +4,8 @@
   "description": "nodejs express with car listing study case",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "test": "jest -i"
   },
   "repository": {
