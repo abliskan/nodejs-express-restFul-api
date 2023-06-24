@@ -1,0 +1,15 @@
+#Logs
+logs
+.logs
+npm-debug.log*
+node_modules/
+dist
+
+# Ignore env
+.env
+
+# Ignore vscode, etc
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_store
