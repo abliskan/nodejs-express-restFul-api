@@ -1,19 +1,20 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Car = sequelize.define('Car', {
-    userId: DataTypes.STRING,
-    carName: DataTypes.STRING,
-    promotionEndDate: DataTypes.STRING,
-    description: DataTypes.STRING,
-    description: DataTypes.STRING,
-    address: DataTypes.STRING,
-    price: DataTypes.STRING,
-    address: DataTypes.STRING,
-    mileage: DataTypes.STRING,
-    carPicture: DataTypes.STRING,
-  }, {});
-  User.associate = function(models) {
-    // associations can be defined here
-  };
-  return User;
-};
+import { sequelize } from "sequelize";
+import { database } from "../../config/database.js";
+import { user } from "./user.js"
+
+export const car = database.define('cliente', {
+  id: { type: sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+  carName: { type: sequelize.STRING},
+  promotionEndDate: { type: sequelize.DATE},
+  description: { type: sequelize.STRING},
+  price: { type: sequelize.STRING},
+  address: { type: sequelize.STRING},
+  mileage: { type: sequelize.INTEGER},
+  carPicture: { type: sequelize.BLOB}
+}, {
+  timestamps: false
+});
+
+// Association database relationship user table and car table
+car.hasMany(user, { foreignKey: 'userId', sourceKey: 'id' });
+user.belongsTo(car, { foreignKey: 'userId', targetKey: 'id' });
